@@ -9,8 +9,8 @@ SELECT
     sp.nickname
 FROM 
     stripe_charges AS ch
-  INNER JOIN stripe_customers AS c ON ch.customer_id = c.id
-  LEFT JOIN stripe_invoice_items AS si ON c.id = si.customer_id
-  JOIN stripe_prices AS sp ON si.price_id = sp.id
+    INNER JOIN stripe_customers AS c ON ch.customer_id = c.id
+    LEFT JOIN stripe_invoice_items AS si ON c.id = si.customer_id
+    JOIN stripe_prices AS sp ON si.price_id = sp.id
 ORDER BY 
     charge_date DESC;
