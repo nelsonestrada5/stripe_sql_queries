@@ -1,0 +1,1433 @@
+                             Table "public.stripe_accounts"
+                    Column                    |  Type   | Collation | Nullable | Default 
+----------------------------------------------+---------+-----------+----------+---------
+ id                                           | text    |           | not null | 
+ business_profile_mcc                         | text    |           |          | 
+ business_profile_name                        | text    |           |          | 
+ business_profile_product_description         | text    |           |          | 
+ business_profile_support_address_city        | text    |           |          | 
+ business_profile_support_address_country     | text    |           |          | 
+ business_profile_support_address_line1       | text    |           |          | 
+ business_profile_support_address_line2       | text    |           |          | 
+ business_profile_support_address_postal_code | text    |           |          | 
+ business_profile_support_address_state       | text    |           |          | 
+ business_profile_support_email               | text    |           |          | 
+ business_profile_support_phone               | text    |           |          | 
+ business_profile_support_url                 | text    |           |          | 
+ business_profile_url                         | text    |           |          | 
+ business_type                                | text    |           |          | 
+ capabilities                                 | jsonb   |           |          | 
+ charges_enabled                              | boolean |           |          | 
+ company_address_city                         | text    |           |          | 
+ company_address_country                      | text    |           |          | 
+ company_address_line1                        | text    |           |          | 
+ company_address_line2                        | text    |           |          | 
+ company_address_postal_code                  | text    |           |          | 
+ company_address_state                        | text    |           |          | 
+ company_address_town                         | text    |           |          | 
+ company_directors_provided                   | boolean |           |          | 
+ company_executives_provided                  | boolean |           |          | 
+ company_name                                 | text    |           |          | 
+ company_ownership_declaration                | jsonb   |           |          | 
+ company_owners_provided                      | boolean |           |          | 
+ company_phone                                | text    |           |          | 
+ company_registration_number                  | text    |           |          | 
+ company_structure                            | text    |           |          | 
+ company_tax_id_provided                      | boolean |           |          | 
+ company_tax_id_registrar                     | text    |           |          | 
+ company_vat_id_provided                      | boolean |           |          | 
+ company_verification                         | jsonb   |           |          | 
+ controller_is_controller                     | boolean |           |          | 
+ controller_type                              | text    |           |          | 
+ country                                      | text    |           |          | 
+ created                                      | bigint  |           |          | 
+ default_currency                             | text    |           |          | 
+ deleted                                      | boolean |           |          | 
+ details_submitted                            | boolean |           |          | 
+ email                                        | text    |           |          | 
+ external_accounts                            | jsonb   |           |          | 
+ future_requirements                          | jsonb   |           |          | 
+ individual_id                                | text    |           |          | 
+ metadata                                     | jsonb   |           |          | 
+ payouts_enabled                              | boolean |           |          | 
+ requirements                                 | jsonb   |           |          | 
+ settings                                     | jsonb   |           |          | 
+ tos_acceptance                               | jsonb   |           |          | 
+ type                                         | text    |           |          | 
+Indexes:
+    "stripe_accounts_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_accounts_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_accounts"
+
+          Table "public.stripe_application_fee_refunds"
+         Column         |  Type  | Collation | Nullable | Default 
+------------------------+--------+-----------+----------+---------
+ id                     | text   |           | not null | 
+ amount                 | bigint |           |          | 
+ balance_transaction_id | text   |           |          | 
+ created                | bigint |           |          | 
+ currency               | text   |           |          | 
+ fee_id                 | text   |           |          | 
+ metadata               | jsonb  |           |          | 
+Indexes:
+    "stripe_application_fee_refunds_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_application_fee_refunds_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_application_fee_refunds"
+
+                Table "public.stripe_application_fees"
+           Column           |  Type   | Collation | Nullable | Default 
+----------------------------+---------+-----------+----------+---------
+ id                         | text    |           | not null | 
+ account_id                 | text    |           |          | 
+ amount                     | bigint  |           |          | 
+ amount_refunded            | bigint  |           |          | 
+ application                | text    |           |          | 
+ balance_transaction_id     | text    |           |          | 
+ charge_id                  | text    |           |          | 
+ created                    | bigint  |           |          | 
+ currency                   | text    |           |          | 
+ livemode                   | boolean |           |          | 
+ originating_transaction_id | text    |           |          | 
+ refunded                   | boolean |           |          | 
+ refunds                    | jsonb   |           |          | 
+Indexes:
+    "stripe_application_fees_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_application_fees_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_application_fees"
+
+          Table "public.stripe_balance_transactions"
+       Column       |  Type  | Collation | Nullable | Default 
+--------------------+--------+-----------+----------+---------
+ id                 | text   |           | not null | 
+ amount             | bigint |           |          | 
+ available_on       | bigint |           |          | 
+ created            | bigint |           |          | 
+ currency           | text   |           |          | 
+ description        | text   |           |          | 
+ exchange_rate      | text   |           |          | 
+ fee                | bigint |           |          | 
+ fee_details        | jsonb  |           |          | 
+ net                | bigint |           |          | 
+ reporting_category | text   |           |          | 
+ source_id          | text   |           |          | 
+ status             | text   |           |          | 
+ type               | text   |           |          | 
+Indexes:
+    "stripe_balance_transactions_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_balance_transactions_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_balance_transactions"
+
+             Table "public.stripe_bank_accounts"
+       Column        | Type  | Collation | Nullable | Default 
+---------------------+-------+-----------+----------+---------
+ id                  | text  |           | not null | 
+ account_holder_name | text  |           |          | 
+ account_holder_type | text  |           |          | 
+ account_type        | text  |           |          | 
+ bank_name           | text  |           |          | 
+ country             | text  |           |          | 
+ currency            | text  |           |          | 
+ customer_id         | text  |           |          | 
+ fingerprint         | text  |           |          | 
+ last4               | text  |           |          | 
+ metadata            | jsonb |           |          | 
+ routing_number      | text  |           |          | 
+ status              | text  |           |          | 
+Indexes:
+    "stripe_bank_accounts_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_bank_accounts_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_bank_accounts"
+
+                  Table "public.stripe_cards"
+       Column        |  Type  | Collation | Nullable | Default 
+---------------------+--------+-----------+----------+---------
+ id                  | text   |           | not null | 
+ address_city        | text   |           |          | 
+ address_country     | text   |           |          | 
+ address_line1       | text   |           |          | 
+ address_line1_check | text   |           |          | 
+ address_line2       | text   |           |          | 
+ address_state       | text   |           |          | 
+ address_zip         | text   |           |          | 
+ address_zip_check   | text   |           |          | 
+ brand               | text   |           |          | 
+ country             | text   |           |          | 
+ customer_id         | text   |           |          | 
+ cvc_check           | text   |           |          | 
+ dynamic_last4       | text   |           |          | 
+ exp_month           | bigint |           |          | 
+ exp_year            | bigint |           |          | 
+ fingerprint         | text   |           |          | 
+ funding             | text   |           |          | 
+ last4               | text   |           |          | 
+ metadata            | jsonb  |           |          | 
+ name                | text   |           |          | 
+ tokenization_method | text   |           |          | 
+Indexes:
+    "stripe_cards_pkey" PRIMARY KEY, btree (id)
+
+ Index "public.stripe_cards_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_cards"
+
+                         Table "public.stripe_charges"
+               Column                |  Type   | Collation | Nullable | Default 
+-------------------------------------+---------+-----------+----------+---------
+ id                                  | text    |           | not null | 
+ amount                              | bigint  |           |          | 
+ amount_captured                     | bigint  |           |          | 
+ amount_refunded                     | bigint  |           |          | 
+ application_id                      | text    |           |          | 
+ application_fee_amount              | bigint  |           |          | 
+ balance_transaction_id              | text    |           |          | 
+ billing_details_address_city        | text    |           |          | 
+ billing_details_address_country     | text    |           |          | 
+ billing_details_address_line1       | text    |           |          | 
+ billing_details_address_line2       | text    |           |          | 
+ billing_details_address_postal_code | text    |           |          | 
+ billing_details_address_state       | text    |           |          | 
+ billing_details_email               | text    |           |          | 
+ billing_details_name                | text    |           |          | 
+ billing_details_phone               | text    |           |          | 
+ calculated_statement_descriptor     | text    |           |          | 
+ captured                            | boolean |           |          | 
+ created                             | bigint  |           |          | 
+ currency                            | text    |           |          | 
+ customer_id                         | text    |           |          | 
+ description                         | text    |           |          | 
+ disputed                            | boolean |           |          | 
+ failure_code                        | text    |           |          | 
+ failure_message                     | text    |           |          | 
+ fraud_details_stripe_report         | text    |           |          | 
+ fraud_details_user_report           | text    |           |          | 
+ invoice_id                          | text    |           |          | 
+ livemode                            | boolean |           |          | 
+ metadata                            | jsonb   |           |          | 
+ on_behalf_of_id                     | text    |           |          | 
+ order_id                            | text    |           |          | 
+ outcome_network_status              | text    |           |          | 
+ outcome_reason                      | text    |           |          | 
+ outcome_risk_level                  | text    |           |          | 
+ outcome_risk_score                  | bigint  |           |          | 
+ outcome_seller_message              | text    |           |          | 
+ outcome_type                        | text    |           |          | 
+ paid                                | boolean |           |          | 
+ payment_intent_id                   | text    |           |          | 
+ payment_method                      | text    |           |          | 
+ payment_method_details              | jsonb   |           |          | 
+ receipt_email                       | text    |           |          | 
+ receipt_number                      | text    |           |          | 
+ receipt_url                         | text    |           |          | 
+ refunded                            | boolean |           |          | 
+ review_id                           | text    |           |          | 
+ shipping_address_city               | text    |           |          | 
+ shipping_address_country            | text    |           |          | 
+ shipping_address_line1              | text    |           |          | 
+ shipping_address_line2              | text    |           |          | 
+ shipping_address_postal_code        | text    |           |          | 
+ shipping_address_state              | text    |           |          | 
+ shipping_carrier                    | text    |           |          | 
+ shipping_name                       | text    |           |          | 
+ shipping_phone                      | text    |           |          | 
+ shipping_tracking_number            | text    |           |          | 
+ source_transfer_id                  | text    |           |          | 
+ statement_descriptor                | text    |           |          | 
+ statement_descriptor_suffix         | text    |           |          | 
+ status                              | text    |           |          | 
+ transfer_dataamount                 | bigint  |           |          | 
+ transfer_datadestination_id         | text    |           |          | 
+ transfer_group                      | text    |           |          | 
+Indexes:
+    "stripe_charges_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_charges_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_charges"
+
+                  Table "public.stripe_checkout_sessions"
+             Column              |  Type   | Collation | Nullable | Default 
+---------------------------------+---------+-----------+----------+---------
+ id                              | text    |           | not null | 
+ after_expiration                | jsonb   |           |          | 
+ allow_promotion_codes           | boolean |           |          | 
+ amount_subtotal                 | bigint  |           |          | 
+ amount_total                    | bigint  |           |          | 
+ automatic_tax_enabled           | boolean |           |          | 
+ automatic_tax_status            | text    |           |          | 
+ billing_address_collection      | text    |           |          | 
+ cancel_url                      | text    |           |          | 
+ client_reference_id             | text    |           |          | 
+ consent                         | jsonb   |           |          | 
+ consent_collection              | jsonb   |           |          | 
+ currency                        | text    |           |          | 
+ customer_id                     | text    |           |          | 
+ customer_creation               | text    |           |          | 
+ customer_details                | jsonb   |           |          | 
+ customer_email                  | text    |           |          | 
+ expires_at                      | bigint  |           |          | 
+ livemode                        | boolean |           |          | 
+ locale                          | text    |           |          | 
+ metadata                        | jsonb   |           |          | 
+ mode                            | text    |           |          | 
+ payment_intent_id               | text    |           |          | 
+ payment_link_id                 | text    |           |          | 
+ payment_method_options          | jsonb   |           |          | 
+ payment_method_types            | jsonb   |           |          | 
+ payment_status                  | text    |           |          | 
+ phone_number_collection_enabled | boolean |           |          | 
+ recovered_from                  | text    |           |          | 
+ setup_intent_id                 | text    |           |          | 
+ shipping_address_city           | text    |           |          | 
+ shipping_address_country        | text    |           |          | 
+ shipping_address_line1          | text    |           |          | 
+ shipping_address_line2          | text    |           |          | 
+ shipping_address_postal_code    | text    |           |          | 
+ shipping_address_state          | text    |           |          | 
+ shipping_carrier                | text    |           |          | 
+ shipping_name                   | text    |           |          | 
+ shipping_phone                  | text    |           |          | 
+ shipping_tracking_number        | text    |           |          | 
+ shipping_address_collection     | jsonb   |           |          | 
+ shipping_options                | jsonb   |           |          | 
+ shipping_rate_id                | text    |           |          | 
+ status                          | text    |           |          | 
+ submit_type                     | text    |           |          | 
+ subscription_id                 | text    |           |          | 
+ success_url                     | text    |           |          | 
+ total_details                   | jsonb   |           |          | 
+ url                             | text    |           |          | 
+Indexes:
+    "stripe_checkout_sessions_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_checkout_sessions_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_checkout_sessions"
+
+                 Table "public.stripe_coupons"
+       Column       |  Type   | Collation | Nullable | Default 
+--------------------+---------+-----------+----------+---------
+ id                 | text    |           | not null | 
+ object             | text    |           |          | 
+ amount_off         | bigint  |           |          | 
+ created            | bigint  |           |          | 
+ currency           | text    |           |          | 
+ duration           | text    |           |          | 
+ duration_in_months | bigint  |           |          | 
+ livemode           | boolean |           |          | 
+ max_redemptions    | bigint  |           |          | 
+ metadata           | jsonb   |           |          | 
+ name               | text    |           |          | 
+ percent_off        | numeric |           |          | 
+ redeem_by          | bigint  |           |          | 
+ times_redeemed     | bigint  |           |          | 
+ valid              | boolean |           |          | 
+Indexes:
+    "stripe_coupons_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_coupons_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_coupons"
+
+                     Table "public.stripe_credit_notes"
+             Column              |  Type   | Collation | Nullable | Default 
+---------------------------------+---------+-----------+----------+---------
+ id                              | text    |           | not null | 
+ amount                          | bigint  |           |          | 
+ created                         | bigint  |           |          | 
+ currency                        | text    |           |          | 
+ customer_id                     | text    |           |          | 
+ customer_balance_transaction_id | text    |           |          | 
+ discount_amount                 | bigint  |           |          | 
+ discount_amounts                | jsonb   |           |          | 
+ invoice_id                      | text    |           |          | 
+ lines                           | jsonb   |           |          | 
+ livemode                        | boolean |           |          | 
+ memo                            | text    |           |          | 
+ metadata                        | jsonb   |           |          | 
+ number                          | text    |           |          | 
+ out_of_band_amount              | bigint  |           |          | 
+ pdf                             | text    |           |          | 
+ reason                          | text    |           |          | 
+ refund_id                       | text    |           |          | 
+ status                          | text    |           |          | 
+ subtotal                        | bigint  |           |          | 
+ tax_amounts                     | jsonb   |           |          | 
+ total                           | bigint  |           |          | 
+ type                            | text    |           |          | 
+ voided_at                       | bigint  |           |          | 
+Indexes:
+    "stripe_credit_notes_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_credit_notes_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_credit_notes"
+
+                            Table "public.stripe_customers"
+                   Column                   |  Type   | Collation | Nullable | Default 
+--------------------------------------------+---------+-----------+----------+---------
+ id                                         | text    |           | not null | 
+ address_city                               | text    |           |          | 
+ address_country                            | text    |           |          | 
+ address_line1                              | text    |           |          | 
+ address_line2                              | text    |           |          | 
+ address_postal_code                        | text    |           |          | 
+ address_state                              | text    |           |          | 
+ balance                                    | bigint  |           |          | 
+ created                                    | bigint  |           |          | 
+ currency                                   | text    |           |          | 
+ default_source_id                          | text    |           |          | 
+ delinquent                                 | boolean |           |          | 
+ description                                | text    |           |          | 
+ discount_id                                | text    |           |          | 
+ email                                      | text    |           |          | 
+ invoice_prefix                             | text    |           |          | 
+ invoice_settings_custom_fields             | jsonb   |           |          | 
+ invoice_settings_default_payment_method_id | text    |           |          | 
+ invoice_settings_footer                    | text    |           |          | 
+ livemode                                   | boolean |           |          | 
+ metadata                                   | jsonb   |           |          | 
+ name                                       | text    |           |          | 
+ next_invoice_sequence                      | bigint  |           |          | 
+ phone                                      | text    |           |          | 
+ preferred_locales                          | jsonb   |           |          | 
+ shipping_address_city                      | text    |           |          | 
+ shipping_address_country                   | text    |           |          | 
+ shipping_address_line1                     | text    |           |          | 
+ shipping_address_line2                     | text    |           |          | 
+ shipping_address_postal_code               | text    |           |          | 
+ shipping_address_state                     | text    |           |          | 
+ shipping_name                              | text    |           |          | 
+ shipping_phone                             | text    |           |          | 
+ tax_exempt                                 | text    |           |          | 
+Indexes:
+    "stripe_customers_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_customers_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_customers"
+
+                            Table "public.stripe_disputes"
+                   Column                   |  Type   | Collation | Nullable | Default 
+--------------------------------------------+---------+-----------+----------+---------
+ id                                         | text    |           | not null | 
+ amount                                     | bigint  |           |          | 
+ balance_transactions                       | jsonb   |           |          | 
+ charge_id                                  | text    |           |          | 
+ created                                    | bigint  |           |          | 
+ currency                                   | text    |           |          | 
+ evidence_access_activity_log               | text    |           |          | 
+ evidence_billing_address                   | text    |           |          | 
+ evidence_cancellation_policy_id            | text    |           |          | 
+ evidence_cancellation_policy_disclosure    | text    |           |          | 
+ evidence_cancellation_rebuttal             | text    |           |          | 
+ evidence_customer_communication_id         | text    |           |          | 
+ evidence_customer_email_address            | text    |           |          | 
+ evidence_customer_name                     | text    |           |          | 
+ evidence_customer_purchase_ip              | text    |           |          | 
+ evidence_customer_signature_id             | text    |           |          | 
+ evidence_duplicate_charge_documentation_id | text    |           |          | 
+ evidence_duplicate_charge_explanation      | text    |           |          | 
+ evidence_duplicate_charge_id               | text    |           |          | 
+ evidence_product_description               | text    |           |          | 
+ evidence_receipt_id                        | text    |           |          | 
+ evidence_refund_policy_id                  | text    |           |          | 
+ evidence_refund_policy_disclosure          | text    |           |          | 
+ evidence_refund_refusal_explanation        | text    |           |          | 
+ evidence_service_date                      | text    |           |          | 
+ evidence_service_documentation_id          | text    |           |          | 
+ evidence_shipping_address                  | text    |           |          | 
+ evidence_shipping_carrier                  | text    |           |          | 
+ evidence_shipping_date                     | text    |           |          | 
+ evidence_shipping_documentation_id         | text    |           |          | 
+ evidence_shipping_tracking_number          | text    |           |          | 
+ evidence_uncategorized_file_id             | text    |           |          | 
+ evidence_uncategorized_text                | text    |           |          | 
+ evidence_details_due_by                    | bigint  |           |          | 
+ evidence_details_has_evidence              | boolean |           |          | 
+ evidence_details_past_due                  | boolean |           |          | 
+ evidence_details_submission_count          | bigint  |           |          | 
+ is_charge_refundable                       | boolean |           |          | 
+ livemode                                   | boolean |           |          | 
+ metadata                                   | jsonb   |           |          | 
+ network_reason_code                        | text    |           |          | 
+ payment_intent_id                          | text    |           |          | 
+ reason                                     | text    |           |          | 
+ status                                     | text    |           |          | 
+Indexes:
+    "stripe_disputes_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_disputes_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_disputes"
+
+      Table "public.stripe_early_fraud_warnings"
+   Column   |  Type   | Collation | Nullable | Default 
+------------+---------+-----------+----------+---------
+ id         | text    |           | not null | 
+ actionable | boolean |           |          | 
+ charge_id  | text    |           |          | 
+ created    | bigint  |           |          | 
+ fraud_type | text    |           |          | 
+ livemode   | boolean |           |          | 
+Indexes:
+    "stripe_early_fraud_warnings_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_early_fraud_warnings_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_early_fraud_warnings"
+
+             Table "public.stripe_files"
+   Column   |  Type  | Collation | Nullable | Default 
+------------+--------+-----------+----------+---------
+ id         | text   |           | not null | 
+ created    | bigint |           |          | 
+ expires_at | bigint |           |          | 
+ filename   | text   |           |          | 
+ links      | jsonb  |           |          | 
+ purpose    | text   |           |          | 
+ size       | bigint |           |          | 
+ title      | text   |           |          | 
+ type       | text   |           |          | 
+ url        | text   |           |          | 
+Indexes:
+    "stripe_files_pkey" PRIMARY KEY, btree (id)
+
+ Index "public.stripe_files_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_files"
+
+              Table "public.stripe_invoice_items"
+       Column        |  Type   | Collation | Nullable | Default 
+---------------------+---------+-----------+----------+---------
+ id                  | text    |           | not null | 
+ amount              | bigint  |           |          | 
+ currency            | text    |           |          | 
+ customer_id         | text    |           |          | 
+ date                | bigint  |           |          | 
+ description         | text    |           |          | 
+ discountable        | boolean |           |          | 
+ discounts           | jsonb   |           |          | 
+ invoice_id          | text    |           |          | 
+ livemode            | boolean |           |          | 
+ metadata            | jsonb   |           |          | 
+ period_end          | bigint  |           |          | 
+ period_start        | bigint  |           |          | 
+ price_id            | text    |           |          | 
+ proration           | boolean |           |          | 
+ quantity            | bigint  |           |          | 
+ subscription_id     | text    |           |          | 
+ tax_rates           | jsonb   |           |          | 
+ unit_amount         | bigint  |           |          | 
+ unit_amount_decimal | numeric |           |          | 
+Indexes:
+    "stripe_invoice_items_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_invoice_items_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_invoice_items"
+
+                            Table "public.stripe_invoices"
+                   Column                   |  Type   | Collation | Nullable | Default 
+--------------------------------------------+---------+-----------+----------+---------
+ id                                         | text    |           | not null | 
+ account_country                            | text    |           |          | 
+ account_name                               | text    |           |          | 
+ account_tax_ids                            | jsonb   |           |          | 
+ amount_due                                 | bigint  |           |          | 
+ amount_paid                                | bigint  |           |          | 
+ amount_remaining                           | bigint  |           |          | 
+ application_fee_amount                     | bigint  |           |          | 
+ attempt_count                              | bigint  |           |          | 
+ attempted                                  | boolean |           |          | 
+ auto_advance                               | boolean |           |          | 
+ automatic_tax_enabled                      | boolean |           |          | 
+ automatic_tax_status                       | text    |           |          | 
+ billing_reason                             | text    |           |          | 
+ charge_id                                  | text    |           |          | 
+ collection_method                          | text    |           |          | 
+ created                                    | bigint  |           |          | 
+ currency                                   | text    |           |          | 
+ custom_fields                              | jsonb   |           |          | 
+ customer_id                                | text    |           |          | 
+ customer_address_city                      | text    |           |          | 
+ customer_address_country                   | text    |           |          | 
+ customer_address_line1                     | text    |           |          | 
+ customer_address_line2                     | text    |           |          | 
+ customer_address_postal_code               | text    |           |          | 
+ customer_address_state                     | text    |           |          | 
+ customer_email                             | text    |           |          | 
+ customer_name                              | text    |           |          | 
+ customer_phone                             | text    |           |          | 
+ customer_shipping_address_city             | text    |           |          | 
+ customer_shipping_address_country          | text    |           |          | 
+ customer_shipping_address_line1            | text    |           |          | 
+ customer_shipping_address_line2            | text    |           |          | 
+ customer_shipping_address_postal_code      | text    |           |          | 
+ customer_shipping_address_state            | text    |           |          | 
+ customer_shipping_name                     | text    |           |          | 
+ customer_shipping_phone                    | text    |           |          | 
+ customer_tax_exempt                        | text    |           |          | 
+ customer_tax_ids                           | jsonb   |           |          | 
+ default_payment_method_id                  | text    |           |          | 
+ default_source_id                          | text    |           |          | 
+ default_tax_rates                          | jsonb   |           |          | 
+ description                                | text    |           |          | 
+ discount                                   | jsonb   |           |          | 
+ discounts                                  | jsonb   |           |          | 
+ due_date                                   | bigint  |           |          | 
+ ending_balance                             | bigint  |           |          | 
+ footer                                     | text    |           |          | 
+ hosted_invoice_url                         | text    |           |          | 
+ invoice_pdf                                | text    |           |          | 
+ last_finalization_error                    | jsonb   |           |          | 
+ lines                                      | jsonb   |           |          | 
+ livemode                                   | boolean |           |          | 
+ metadata                                   | jsonb   |           |          | 
+ next_payment_attempt                       | bigint  |           |          | 
+ number                                     | text    |           |          | 
+ on_behalf_of_id                            | text    |           |          | 
+ paid                                       | boolean |           |          | 
+ paid_out_of_band                           | boolean |           |          | 
+ payment_intent_id                          | text    |           |          | 
+ payment_settings                           | jsonb   |           |          | 
+ period_end                                 | bigint  |           |          | 
+ period_start                               | bigint  |           |          | 
+ post_payment_credit_notes_amount           | bigint  |           |          | 
+ pre_payment_credit_notes_amount            | bigint  |           |          | 
+ quote_id                                   | text    |           |          | 
+ receipt_number                             | text    |           |          | 
+ starting_balance                           | bigint  |           |          | 
+ statement_descriptor                       | text    |           |          | 
+ status                                     | text    |           |          | 
+ status_transitions_finalized_at            | bigint  |           |          | 
+ status_transitions_marked_uncollectible_at | bigint  |           |          | 
+ status_transitions_paid_at                 | bigint  |           |          | 
+ status_transitions_voided_at               | bigint  |           |          | 
+ subscription_id                            | text    |           |          | 
+ subtotal                                   | bigint  |           |          | 
+ tax                                        | bigint  |           |          | 
+ total                                      | bigint  |           |          | 
+ total_discount_amounts                     | jsonb   |           |          | 
+ total_tax_amounts                          | jsonb   |           |          | 
+ transfer_dataamount                        | bigint  |           |          | 
+ transfer_datadestination_id                | text    |           |          | 
+ webhooks_delivered_at                      | bigint  |           |          | 
+Indexes:
+    "stripe_invoices_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_invoices_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_invoices"
+
+                      Table "public.stripe_issuing_authorizations"
+                   Column                    |  Type   | Collation | Nullable | Default 
+---------------------------------------------+---------+-----------+----------+---------
+ id                                          | text    |           | not null | 
+ amount                                      | bigint  |           |          | 
+ amount_details_atm_fee                      | bigint  |           |          | 
+ approved                                    | boolean |           |          | 
+ authorization_method                        | text    |           |          | 
+ balance_transactions                        | jsonb   |           |          | 
+ card_id                                     | text    |           |          | 
+ cardholder_id                               | text    |           |          | 
+ created                                     | bigint  |           |          | 
+ currency                                    | text    |           |          | 
+ livemode                                    | boolean |           |          | 
+ merchant_amount                             | bigint  |           |          | 
+ merchant_currency                           | text    |           |          | 
+ merchant_data_category                      | text    |           |          | 
+ merchant_data_category_code                 | text    |           |          | 
+ merchant_data_city                          | text    |           |          | 
+ merchant_data_country                       | text    |           |          | 
+ merchant_data_name                          | text    |           |          | 
+ merchant_data_network_id                    | text    |           |          | 
+ merchant_data_postal_code                   | text    |           |          | 
+ merchant_data_state                         | text    |           |          | 
+ metadata                                    | jsonb   |           |          | 
+ pending_request_amount                      | bigint  |           |          | 
+ pending_request_amount_details_atm_fee      | bigint  |           |          | 
+ pending_request_currency                    | text    |           |          | 
+ pending_request_is_amount_controllable      | boolean |           |          | 
+ pending_request_merchant_amount             | bigint  |           |          | 
+ pending_request_merchant_currency           | text    |           |          | 
+ request_history                             | jsonb   |           |          | 
+ status                                      | text    |           |          | 
+ transactions                                | jsonb   |           |          | 
+ verification_data_address_line1_check       | text    |           |          | 
+ verification_data_address_postal_code_check | text    |           |          | 
+ verification_data_cvc_check                 | text    |           |          | 
+ verification_data_expiry_check              | text    |           |          | 
+ wallet                                      | text    |           |          | 
+Indexes:
+    "stripe_issuing_authorizations_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_issuing_authorizations_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_issuing_authorizations"
+
+                       Table "public.stripe_issuing_cardholders"
+                   Column                   |  Type   | Collation | Nullable | Default 
+--------------------------------------------+---------+-----------+----------+---------
+ id                                         | text    |           | not null | 
+ billing_address_city                       | text    |           |          | 
+ billing_address_country                    | text    |           |          | 
+ billing_address_line1                      | text    |           |          | 
+ billing_address_line2                      | text    |           |          | 
+ billing_address_postal_code                | text    |           |          | 
+ billing_address_state                      | text    |           |          | 
+ company_tax_id_provided                    | boolean |           |          | 
+ created                                    | bigint  |           |          | 
+ email                                      | text    |           |          | 
+ individual_dob_day                         | bigint  |           |          | 
+ individual_dob_month                       | bigint  |           |          | 
+ individual_dob_year                        | bigint  |           |          | 
+ individual_first_name                      | text    |           |          | 
+ individual_last_name                       | text    |           |          | 
+ individual_verification                    | jsonb   |           |          | 
+ livemode                                   | boolean |           |          | 
+ metadata                                   | jsonb   |           |          | 
+ name                                       | text    |           |          | 
+ phone_number                               | text    |           |          | 
+ requirements_disabled_reason               | text    |           |          | 
+ requirements_past_due                      | jsonb   |           |          | 
+ spending_controls_allowed_categories       | jsonb   |           |          | 
+ spending_controls_blocked_categories       | jsonb   |           |          | 
+ spending_controls_spending_limits          | jsonb   |           |          | 
+ spending_controls_spending_limits_currency | text    |           |          | 
+ status                                     | text    |           |          | 
+ type                                       | text    |           |          | 
+Indexes:
+    "stripe_issuing_cardholders_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_issuing_cardholders_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_issuing_cardholders"
+
+                          Table "public.stripe_issuing_cards"
+                   Column                   |  Type   | Collation | Nullable | Default 
+--------------------------------------------+---------+-----------+----------+---------
+ id                                         | text    |           | not null | 
+ billing_address_city                       | text    |           |          | 
+ billing_address_country                    | text    |           |          | 
+ billing_address_line1                      | text    |           |          | 
+ billing_address_line2                      | text    |           |          | 
+ billing_address_postal_code                | text    |           |          | 
+ billing_address_state                      | text    |           |          | 
+ company_tax_id_provided                    | boolean |           |          | 
+ created                                    | bigint  |           |          | 
+ email                                      | text    |           |          | 
+ individual_dob_day                         | bigint  |           |          | 
+ individual_dob_month                       | bigint  |           |          | 
+ individual_dob_year                        | bigint  |           |          | 
+ individual_first_name                      | text    |           |          | 
+ individual_last_name                       | text    |           |          | 
+ individual_verification                    | jsonb   |           |          | 
+ livemode                                   | boolean |           |          | 
+ metadata                                   | jsonb   |           |          | 
+ name                                       | text    |           |          | 
+ phone_number                               | text    |           |          | 
+ requirements_disabled_reason               | text    |           |          | 
+ requirements_past_due                      | jsonb   |           |          | 
+ spending_controls_allowed_categories       | jsonb   |           |          | 
+ spending_controls_blocked_categories       | jsonb   |           |          | 
+ spending_controls_spending_limits          | jsonb   |           |          | 
+ spending_controls_spending_limits_currency | text    |           |          | 
+ status                                     | text    |           |          | 
+ type                                       | text    |           |          | 
+Indexes:
+    "stripe_issuing_cards_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_issuing_cards_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_issuing_cards"
+
+                         Table "public.stripe_issuing_disputes"
+                    Column                    |  Type   | Collation | Nullable | Default 
+----------------------------------------------+---------+-----------+----------+---------
+ id                                           | text    |           | not null | 
+ amount                                       | bigint  |           |          | 
+ created                                      | bigint  |           |          | 
+ currency                                     | text    |           |          | 
+ evidence_fraudulent_additional_documentation | jsonb   |           |          | 
+ evidence_fraudulent_explanation              | text    |           |          | 
+ evidence_reason                              | text    |           |          | 
+ livemode                                     | boolean |           |          | 
+ metadata                                     | jsonb   |           |          | 
+ status                                       | text    |           |          | 
+ transaction_id                               | text    |           |          | 
+Indexes:
+    "stripe_issuing_disputes_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_issuing_disputes_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_issuing_disputes"
+
+               Table "public.stripe_issuing_transactions"
+           Column            |  Type   | Collation | Nullable | Default 
+-----------------------------+---------+-----------+----------+---------
+ id                          | text    |           | not null | 
+ amount                      | bigint  |           |          | 
+ amount_details_atm_fee      | bigint  |           |          | 
+ authorization_id            | text    |           |          | 
+ balance_transaction_id      | text    |           |          | 
+ card_id                     | text    |           |          | 
+ cardholder_id               | text    |           |          | 
+ created                     | bigint  |           |          | 
+ currency                    | text    |           |          | 
+ dispute_id                  | text    |           |          | 
+ livemode                    | boolean |           |          | 
+ merchant_amount             | bigint  |           |          | 
+ merchant_currency           | text    |           |          | 
+ merchant_data_category      | text    |           |          | 
+ merchant_data_category_code | text    |           |          | 
+ merchant_data_city          | text    |           |          | 
+ merchant_data_country       | text    |           |          | 
+ merchant_data_name          | text    |           |          | 
+ merchant_data_network_id    | text    |           |          | 
+ merchant_data_postal_code   | text    |           |          | 
+ merchant_data_state         | text    |           |          | 
+ metadata                    | jsonb   |           |          | 
+ type                        | text    |           |          | 
+ wallet                      | text    |           |          | 
+Indexes:
+    "stripe_issuing_transactions_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_issuing_transactions_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_issuing_transactions"
+
+                    Table "public.stripe_payment_intents"
+              Column               |  Type   | Collation | Nullable | Default 
+-----------------------------------+---------+-----------+----------+---------
+ id                                | text    |           | not null | 
+ amount                            | bigint  |           |          | 
+ amount_capturable                 | bigint  |           |          | 
+ amount_received                   | bigint  |           |          | 
+ application_id                    | text    |           |          | 
+ application_fee_amount            | bigint  |           |          | 
+ automatic_payment_methods_enabled | boolean |           |          | 
+ canceled_at                       | bigint  |           |          | 
+ cancellation_reason               | text    |           |          | 
+ capture_method                    | text    |           |          | 
+ charges_data                      | jsonb   |           |          | 
+ confirmation_method               | text    |           |          | 
+ created                           | bigint  |           |          | 
+ currency                          | text    |           |          | 
+ customer_id                       | text    |           |          | 
+ description                       | text    |           |          | 
+ invoice_id                        | text    |           |          | 
+ last_payment_error                | jsonb   |           |          | 
+ livemode                          | boolean |           |          | 
+ metadata                          | jsonb   |           |          | 
+ next_action                       | jsonb   |           |          | 
+ on_behalf_of_id                   | text    |           |          | 
+ payment_method_id                 | text    |           |          | 
+ payment_method_options            | jsonb   |           |          | 
+ payment_method_types              | jsonb   |           |          | 
+ processing                        | jsonb   |           |          | 
+ receipt_email                     | text    |           |          | 
+ review_id                         | text    |           |          | 
+ setup_future_usage                | text    |           |          | 
+ shipping_address_city             | text    |           |          | 
+ shipping_address_country          | text    |           |          | 
+ shipping_address_line1            | text    |           |          | 
+ shipping_address_line2            | text    |           |          | 
+ shipping_address_postal_code      | text    |           |          | 
+ shipping_address_state            | text    |           |          | 
+ shipping_email                    | text    |           |          | 
+ shipping_name                     | text    |           |          | 
+ shipping_phone                    | text    |           |          | 
+ shipping_tracking_number          | text    |           |          | 
+ source_id                         | text    |           |          | 
+ statement_descriptor              | text    |           |          | 
+ statement_descriptor_suffix       | text    |           |          | 
+ status                            | text    |           |          | 
+ transfer_dataamount               | bigint  |           |          | 
+ transfer_datadestination_id       | text    |           |          | 
+ transfer_group                    | text    |           |          | 
+Indexes:
+    "stripe_payment_intents_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_payment_intents_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_payment_intents"
+
+                    Table "public.stripe_payment_links"
+             Column              |  Type   | Collation | Nullable | Default 
+---------------------------------+---------+-----------+----------+---------
+ id                              | text    |           | not null | 
+ active                          | boolean |           |          | 
+ after_completion                | jsonb   |           |          | 
+ allow_promotion_codes           | boolean |           |          | 
+ application_fee_amount          | bigint  |           |          | 
+ application_fee_percent         | numeric |           |          | 
+ automatic_tax_enabled           | boolean |           |          | 
+ billing_address_collection      | text    |           |          | 
+ livemode                        | boolean |           |          | 
+ metadata                        | jsonb   |           |          | 
+ on_behalf_of_id                 | text    |           |          | 
+ payment_method_types            | jsonb   |           |          | 
+ phone_number_collection_enabled | boolean |           |          | 
+ shipping_address_collection     | jsonb   |           |          | 
+ subscription_data               | jsonb   |           |          | 
+ transfer_dataamount             | bigint  |           |          | 
+ transfer_datadestination_id     | text    |           |          | 
+ url                             | text    |           |          | 
+Indexes:
+    "stripe_payment_links_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_payment_links_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_payment_links"
+
+                     Table "public.stripe_payment_methods"
+               Column                |  Type   | Collation | Nullable | Default 
+-------------------------------------+---------+-----------+----------+---------
+ id                                  | text    |           | not null | 
+ billing_details_address_city        | text    |           |          | 
+ billing_details_address_country     | text    |           |          | 
+ billing_details_address_line1       | text    |           |          | 
+ billing_details_address_line2       | text    |           |          | 
+ billing_details_address_postal_code | text    |           |          | 
+ billing_details_address_state       | text    |           |          | 
+ billing_details_email               | text    |           |          | 
+ billing_details_name                | text    |           |          | 
+ billing_details_phone               | text    |           |          | 
+ acss_debit                          | jsonb   |           |          | 
+ afterpay_clearpay                   | jsonb   |           |          | 
+ alipay                              | jsonb   |           |          | 
+ aubecs_debit                        | jsonb   |           |          | 
+ bacs_debit                          | jsonb   |           |          | 
+ bancontact                          | jsonb   |           |          | 
+ boleto                              | jsonb   |           |          | 
+ card                                | jsonb   |           |          | 
+ card_present                        | jsonb   |           |          | 
+ created                             | bigint  |           |          | 
+ customer_id                         | text    |           |          | 
+ eps                                 | jsonb   |           |          | 
+ fpx                                 | jsonb   |           |          | 
+ giropay                             | jsonb   |           |          | 
+ grabpay                             | jsonb   |           |          | 
+ ideal                               | jsonb   |           |          | 
+ interac_present                     | jsonb   |           |          | 
+ klarna                              | jsonb   |           |          | 
+ livemode                            | boolean |           |          | 
+ metadata                            | jsonb   |           |          | 
+ oxxo                                | jsonb   |           |          | 
+ p24                                 | jsonb   |           |          | 
+ sepa_debit                          | jsonb   |           |          | 
+ sofort                              | jsonb   |           |          | 
+ wechat_pay                          | jsonb   |           |          | 
+ us_bank_account                     | jsonb   |           |          | 
+ type                                | text    |           |          | 
+Indexes:
+    "stripe_payment_methods_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_payment_methods_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_payment_methods"
+
+                     Table "public.stripe_payouts"
+           Column            |  Type   | Collation | Nullable | Default 
+-----------------------------+---------+-----------+----------+---------
+ id                          | text    |           | not null | 
+ amount                      | bigint  |           |          | 
+ arrival_date                | bigint  |           |          | 
+ automatic                   | boolean |           |          | 
+ balance_transaction_id      | text    |           |          | 
+ created                     | bigint  |           |          | 
+ currency                    | text    |           |          | 
+ description                 | text    |           |          | 
+ destination_id              | text    |           |          | 
+ failure_balance_transaction | text    |           |          | 
+ failure_code                | text    |           |          | 
+ failure_message             | text    |           |          | 
+ livemode                    | boolean |           |          | 
+ metadata                    | jsonb   |           |          | 
+ method                      | text    |           |          | 
+ original_payout             | text    |           |          | 
+ reversed_by_id              | text    |           |          | 
+ source_type                 | text    |           |          | 
+ statement_descriptor        | text    |           |          | 
+ status                      | text    |           |          | 
+ type                        | text    |           |          | 
+Indexes:
+    "stripe_payouts_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_payouts_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_payouts"
+
+                     Table "public.stripe_plans"
+          Column           |  Type   | Collation | Nullable | Default 
+---------------------------+---------+-----------+----------+---------
+ id                        | text    |           | not null | 
+ active                    | boolean |           |          | 
+ aggregate_usage           | text    |           |          | 
+ amount                    | bigint  |           |          | 
+ amount_decimal            | numeric |           |          | 
+ billing_scheme            | text    |           |          | 
+ created                   | bigint  |           |          | 
+ currency                  | text    |           |          | 
+ interval                  | text    |           |          | 
+ interval_count            | bigint  |           |          | 
+ livemode                  | boolean |           |          | 
+ metadata                  | jsonb   |           |          | 
+ nickname                  | text    |           |          | 
+ product_id                | text    |           |          | 
+ tiers_mode                | text    |           |          | 
+ transform_usage_divide_by | bigint  |           |          | 
+ transform_usage_round     | text    |           |          | 
+ trial_period_days         | bigint  |           |          | 
+ usage_type                | text    |           |          | 
+Indexes:
+    "stripe_plans_pkey" PRIMARY KEY, btree (id)
+
+ Index "public.stripe_plans_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_plans"
+
+                     Table "public.stripe_prices"
+          Column           |  Type   | Collation | Nullable | Default 
+---------------------------+---------+-----------+----------+---------
+ id                        | text    |           | not null | 
+ active                    | boolean |           |          | 
+ billing_scheme            | text    |           |          | 
+ created                   | bigint  |           |          | 
+ currency                  | text    |           |          | 
+ livemode                  | boolean |           |          | 
+ lookup_key                | text    |           |          | 
+ metadata                  | jsonb   |           |          | 
+ nickname                  | text    |           |          | 
+ product_id                | text    |           |          | 
+ recurring_aggregate_usage | text    |           |          | 
+ recurring_interval        | text    |           |          | 
+ recurring_interval_count  | bigint  |           |          | 
+ recurring_usage_type      | text    |           |          | 
+ tax_behavior              | text    |           |          | 
+ tiers_mode                | text    |           |          | 
+ transform_quantity        | jsonb   |           |          | 
+ type                      | text    |           |          | 
+ unit_amount               | bigint  |           |          | 
+ unit_amount_decimal       | numeric |           |          | 
+Indexes:
+    "stripe_prices_pkey" PRIMARY KEY, btree (id)
+
+ Index "public.stripe_prices_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_prices"
+
+                 Table "public.stripe_products"
+        Column        |  Type   | Collation | Nullable | Default 
+----------------------+---------+-----------+----------+---------
+ id                   | text    |           | not null | 
+ active               | boolean |           |          | 
+ created              | bigint  |           |          | 
+ description          | text    |           |          | 
+ images               | jsonb   |           |          | 
+ livemode             | boolean |           |          | 
+ metadata             | jsonb   |           |          | 
+ name                 | text    |           |          | 
+ package_dimensions   | jsonb   |           |          | 
+ shippable            | boolean |           |          | 
+ statement_descriptor | text    |           |          | 
+ tax_code_id          | text    |           |          | 
+ unit_label           | text    |           |          | 
+ updated              | bigint  |           |          | 
+ url                  | text    |           |          | 
+Indexes:
+    "stripe_products_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_products_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_products"
+
+                      Table "public.stripe_promotion_codes"
+                Column                |  Type   | Collation | Nullable | Default 
+--------------------------------------+---------+-----------+----------+---------
+ id                                   | text    |           | not null | 
+ active                               | boolean |           |          | 
+ code                                 | text    |           |          | 
+ coupon_id                            | text    |           |          | 
+ created                              | bigint  |           |          | 
+ customer_id                          | text    |           |          | 
+ expires_at                           | bigint  |           |          | 
+ livemode                             | boolean |           |          | 
+ max_redemptions                      | bigint  |           |          | 
+ metadata                             | jsonb   |           |          | 
+ restrictions_first_time_transaction  | boolean |           |          | 
+ restrictions_minimum_amount          | bigint  |           |          | 
+ restrictions_minimum_amount_currency | text    |           |          | 
+ times_redeemed                       | bigint  |           |          | 
+Indexes:
+    "stripe_promotion_codes_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_promotion_codes_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_promotion_codes"
+
+                          Table "public.stripe_quotes"
+               Column                |  Type   | Collation | Nullable | Default 
+-------------------------------------+---------+-----------+----------+---------
+ id                                  | text    |           | not null | 
+ amount_subtotal                     | bigint  |           |          | 
+ amount_total                        | bigint  |           |          | 
+ application_fee_amount              | bigint  |           |          | 
+ application_fee_percent             | numeric |           |          | 
+ automatic_tax_enabled               | boolean |           |          | 
+ automatic_tax_status                | text    |           |          | 
+ collection_method                   | text    |           |          | 
+ computed                            | jsonb   |           |          | 
+ created                             | bigint  |           |          | 
+ currency                            | text    |           |          | 
+ customer_id                         | text    |           |          | 
+ default_tax_rates                   | jsonb   |           |          | 
+ description                         | text    |           |          | 
+ discounts                           | jsonb   |           |          | 
+ expires_at                          | bigint  |           |          | 
+ footer                              | text    |           |          | 
+ customer_is_revision                | boolean |           |          | 
+ customer_quote_id                   | text    |           |          | 
+ header                              | text    |           |          | 
+ invoice_id                          | text    |           |          | 
+ invoice_settings_days_until_due     | bigint  |           |          | 
+ livemode                            | boolean |           |          | 
+ metadata                            | jsonb   |           |          | 
+ number                              | text    |           |          | 
+ on_behalf_of_id                     | text    |           |          | 
+ status                              | text    |           |          | 
+ status_transitions_accepted_at      | bigint  |           |          | 
+ status_transitions_canceled_at      | bigint  |           |          | 
+ status_transitions_finalized_at     | bigint  |           |          | 
+ subscription_id                     | text    |           |          | 
+ subscription_data_effective_date    | bigint  |           |          | 
+ subscription_data_trial_period_days | bigint  |           |          | 
+ subscription_schedule_id            | text    |           |          | 
+ total_details_amount_discount       | bigint  |           |          | 
+ total_details_amount_shipping       | bigint  |           |          | 
+ total_details_amount_tax            | bigint  |           |          | 
+ transfer_dataamount                 | bigint  |           |          | 
+ transfer_datadestination_id         | text    |           |          | 
+Indexes:
+    "stripe_quotes_pkey" PRIMARY KEY, btree (id)
+
+ Index "public.stripe_quotes_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_quotes"
+
+                     Table "public.stripe_refunds"
+           Column            |  Type  | Collation | Nullable | Default 
+-----------------------------+--------+-----------+----------+---------
+ id                          | text   |           | not null | 
+ amount                      | bigint |           |          | 
+ balance_transaction_id      | text   |           |          | 
+ charge_id                   | text   |           |          | 
+ created                     | bigint |           |          | 
+ currency                    | text   |           |          | 
+ metadata                    | jsonb  |           |          | 
+ payment_intent_id           | text   |           |          | 
+ reason                      | text   |           |          | 
+ receipt_number              | text   |           |          | 
+ source_transfer_reversal_id | text   |           |          | 
+ status                      | text   |           |          | 
+ transfer_reversal_id        | text   |           |          | 
+Indexes:
+    "stripe_refunds_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_refunds_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_refunds"
+
+               Table "public.stripe_shipping_rates"
+        Column         |  Type   | Collation | Nullable | Default 
+-----------------------+---------+-----------+----------+---------
+ id                    | text    |           | not null | 
+ active                | boolean |           |          | 
+ created               | bigint  |           |          | 
+ delivery_estimate     | jsonb   |           |          | 
+ display_name          | text    |           |          | 
+ fixed_amount_amount   | bigint  |           |          | 
+ fixed_amount_currency | text    |           |          | 
+ livemode              | boolean |           |          | 
+ metadata              | jsonb   |           |          | 
+ tax_behavior          | text    |           |          | 
+ tax_code_id           | text    |           |          | 
+ type                  | text    |           |          | 
+Indexes:
+    "stripe_shipping_rates_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_shipping_rates_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_shipping_rates"
+
+                               Table "public.stripe_subscription_schedules"
+                            Column                             |  Type   | Collation | Nullable | Default 
+---------------------------------------------------------------+---------+-----------+----------+---------
+ id                                                            | text    |           | not null | 
+ canceled_at                                                   | bigint  |           |          | 
+ completed_at                                                  | bigint  |           |          | 
+ created                                                       | bigint  |           |          | 
+ current_phase_end_date                                        | bigint  |           |          | 
+ current_phase_start_date                                      | bigint  |           |          | 
+ customer_id                                                   | text    |           |          | 
+ default_settingsapplication_fee_percent                       | numeric |           |          | 
+ default_settingsautomatic_tax_enabled                         | boolean |           |          | 
+ default_settingsbilling_cycle_anchor                          | text    |           |          | 
+ default_settingsbilling_thresholds_amount_gte                 | bigint  |           |          | 
+ default_settingsbilling_thresholds_reset_billing_cycle_anchor | boolean |           |          | 
+ default_settingscollection_method                             | text    |           |          | 
+ default_settingsdefault_payment_method_id                     | text    |           |          | 
+ default_settingsinvoice_settings_days_until_due               | bigint  |           |          | 
+ default_settingstransfer_dataamount_percent                   | numeric |           |          | 
+ default_settingstransfer_datadestination_id                   | text    |           |          | 
+ end_behavior                                                  | text    |           |          | 
+ livemode                                                      | boolean |           |          | 
+ metadata                                                      | jsonb   |           |          | 
+ phases                                                        | jsonb   |           |          | 
+ released_at                                                   | bigint  |           |          | 
+ released_subscription_id                                      | text    |           |          | 
+ status                                                        | text    |           |          | 
+ subscription_id                                               | text    |           |          | 
+Indexes:
+    "stripe_subscription_schedules_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_subscription_schedules_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_subscription_schedules"
+
+                           Table "public.stripe_subscriptions"
+                    Column                     |  Type   | Collation | Nullable | Default 
+-----------------------------------------------+---------+-----------+----------+---------
+ id                                            | text    |           | not null | 
+ application_fee_percent                       | numeric |           |          | 
+ automatic_tax_enabled                         | boolean |           |          | 
+ billing_cycle_anchor                          | bigint  |           |          | 
+ billing_thresholds_amount_gte                 | bigint  |           |          | 
+ billing_thresholds_reset_billing_cycle_anchor | boolean |           |          | 
+ cancel_at                                     | bigint  |           |          | 
+ cancel_at_period_end                          | boolean |           |          | 
+ canceled_at                                   | bigint  |           |          | 
+ collection_method                             | text    |           |          | 
+ created                                       | bigint  |           |          | 
+ current_period_end                            | bigint  |           |          | 
+ current_period_start                          | bigint  |           |          | 
+ customer_id                                   | text    |           |          | 
+ days_until_due                                | bigint  |           |          | 
+ default_payment_method_id                     | text    |           |          | 
+ default_source_id                             | text    |           |          | 
+ default_tax_rates                             | jsonb   |           |          | 
+ discount_id                                   | text    |           |          | 
+ ended_at                                      | bigint  |           |          | 
+ items                                         | jsonb   |           |          | 
+ latest_invoice_id                             | text    |           |          | 
+ livemode                                      | boolean |           |          | 
+ metadata                                      | jsonb   |           |          | 
+ next_pending_invoice_item_invoice             | bigint  |           |          | 
+ pause_collection_behavior                     | text    |           |          | 
+ pause_collection_resumes_at                   | bigint  |           |          | 
+ payment_settings                              | jsonb   |           |          | 
+ pending_invoice_item_interval_interval        | text    |           |          | 
+ pending_invoice_item_interval_interval_count  | bigint  |           |          | 
+ pending_setup_intent_id                       | text    |           |          | 
+ pending_update                                | jsonb   |           |          | 
+ schedule_id                                   | text    |           |          | 
+ start_date                                    | bigint  |           |          | 
+ status                                        | text    |           |          | 
+ transfer_dataamount_percent                   | numeric |           |          | 
+ transfer_datadestination_id                   | text    |           |          | 
+ trial_end                                     | bigint  |           |          | 
+ trial_start                                   | bigint  |           |          | 
+Indexes:
+    "stripe_subscriptions_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_subscriptions_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_subscriptions"
+
+               Table "public.stripe_sync_states"
+       Column        |  Type   | Collation | Nullable | Default 
+---------------------+---------+-----------+----------+---------
+ sync_item           | text    |           |          | 
+ min_offset          | text    |           |          | 
+ max_offset          | text    |           |          | 
+ full_sync_completed | boolean |           |          | 
+
+             Table "public.stripe_tax_rates"
+    Column    |  Type   | Collation | Nullable | Default 
+--------------+---------+-----------+----------+---------
+ id           | text    |           | not null | 
+ active       | boolean |           |          | 
+ country      | text    |           |          | 
+ created      | bigint  |           |          | 
+ description  | text    |           |          | 
+ display_name | text    |           |          | 
+ inclusive    | boolean |           |          | 
+ jurisdiction | text    |           |          | 
+ livemode     | boolean |           |          | 
+ metadata     | jsonb   |           |          | 
+ percentage   | numeric |           |          | 
+ state        | text    |           |          | 
+ tax_type     | text    |           |          | 
+Indexes:
+    "stripe_tax_rates_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_tax_rates_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_tax_rates"
+
+                     Table "public.stripe_topups"
+           Column           |  Type   | Collation | Nullable | Default 
+----------------------------+---------+-----------+----------+---------
+ id                         | text    |           | not null | 
+ amount                     | bigint  |           |          | 
+ balance_transaction_id     | text    |           |          | 
+ created                    | bigint  |           |          | 
+ currency                   | text    |           |          | 
+ description                | text    |           |          | 
+ expected_availability_date | bigint  |           |          | 
+ failure_code               | text    |           |          | 
+ failure_message            | text    |           |          | 
+ livemode                   | boolean |           |          | 
+ metadata                   | jsonb   |           |          | 
+ source_id                  | text    |           |          | 
+ statement_descriptor       | text    |           |          | 
+ status                     | text    |           |          | 
+ transfer_group             | text    |           |          | 
+Indexes:
+    "stripe_topups_pkey" PRIMARY KEY, btree (id)
+
+ Index "public.stripe_topups_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_topups"
+
+                Table "public.stripe_transfer_reversals"
+            Column             |  Type  | Collation | Nullable | Default 
+-------------------------------+--------+-----------+----------+---------
+ id                            | text   |           | not null | 
+ amount                        | bigint |           |          | 
+ balance_transaction_id        | text   |           |          | 
+ created                       | bigint |           |          | 
+ currency                      | text   |           |          | 
+ destination_payment_refund_id | text   |           |          | 
+ metadata                      | jsonb  |           |          | 
+ source_refund_id              | text   |           |          | 
+ transfer                      | text   |           |          | 
+Indexes:
+    "stripe_transfer_reversals_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_transfer_reversals_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_transfer_reversals"
+
+                  Table "public.stripe_transfers"
+         Column         |  Type   | Collation | Nullable | Default 
+------------------------+---------+-----------+----------+---------
+ id                     | text    |           | not null | 
+ amount                 | bigint  |           |          | 
+ amount_reversed        | bigint  |           |          | 
+ balance_transaction_id | text    |           |          | 
+ created                | bigint  |           |          | 
+ currency               | text    |           |          | 
+ description            | text    |           |          | 
+ destination_id         | text    |           |          | 
+ destination_payment_id | text    |           |          | 
+ livemode               | boolean |           |          | 
+ metadata               | jsonb   |           |          | 
+ reversals              | jsonb   |           |          | 
+ reversed               | boolean |           |          | 
+ source_transaction_id  | text    |           |          | 
+ source_type            | text    |           |          | 
+ transfer_group         | text    |           |          | 
+Indexes:
+    "stripe_transfers_pkey" PRIMARY KEY, btree (id)
+
+Index "public.stripe_transfers_pkey"
+ Column | Type | Key? | Definition 
+--------+------+------+------------
+ id     | text | yes  | id
+primary key, btree, for table "public.stripe_transfers"
+
