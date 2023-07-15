@@ -1,11 +1,12 @@
 SELECT 
     ch.id AS charge_id,
-    to_timestamp(ch.created) AS charge_date,
+    -- Stripe times are 7 hours ahead of EST so substracting 7 hours
+    -- Note, this is not a robust strategy, daylight savings will unsync times
+    (to_timestamp(ch.created) - INTERVAL '7 hours') AS charge_date, 
     c.name AS customer_name,
     ch.amount::decimal / 100 AS charge_amount_in_dollars,
     ch.status AS charge_status,
     ch.description AS charge_description,
-    si.description AS invoice_description,
     sp.nickname
 FROM 
     stripe_charges AS ch
