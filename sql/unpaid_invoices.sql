@@ -28,13 +28,13 @@ WHERE
   --    canceled - the subscription has been canceled.
   --    unpaid   - alternative to canceled and leaves invoices open, 
   --               but doesn’t attempt to pay them until a new payment method is added.
-  -- stripe_subscriptions.status = 'past_due' AND
+  stripe_subscriptions.status = 'unpaid'
   -- Invoice Status States (https://stripe.com/docs/billing/migration/invoice-states)
   --    draft - invoice is modifiable
   --    open  - invoice is ready for payment, cannot be modified
   --    paid  - invoice has been paid in full
   --    void  - invoice is no longer valid
   --    uncollectible - unlikely to be paid, could be considered bad debt
-  stripe_invoices.status = 'open'
+  AND stripe_invoices.status = 'open'
 ORDER BY 
   TO_TIMESTAMP(stripe_payment_intents.created) DESC;
