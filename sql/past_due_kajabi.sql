@@ -1,6 +1,6 @@
 --
 -- Vender Sin Vender
--- AED Offers [WIP]
+-- Kajabi Offers [2148878239,2148878215,2148878173,2148878203,2148889673]
 -- Estas son las personas que nos deben dinero
 -- 
 -- 
@@ -9,6 +9,8 @@ SELECT
   stripe_subscriptions.metadata->>'kjb_offer_id' AS kjb_offer_id,
   stripe_customers.name AS customer_name,
   stripe_customers.email AS customer_email,
+  stripe_invoices.hosted_invoice_url AS invoice_url,
+  stripe_invoices.attempt_count AS invoice_attempt_count,
   stripe_invoices.amount_due::decimal / 100 AS invoice_amount_due,
   stripe_invoices.amount_paid::decimal / 100 AS invoice_amount_paid,  
   stripe_invoices.amount_remaining::decimal / 100 AS invoice_amount_remaining,
@@ -16,7 +18,6 @@ SELECT
   stripe_subscriptions.latest_invoice_id AS latest_invoice_id,
   stripe_subscriptions.customer_id AS customer_id,
   stripe_payment_intents.id AS payment_intent_id,
-  stripe_invoices.attempt_count AS invoice_attempt_count,
   stripe_subscriptions.id AS subscription_id,
   CONCAT('https://dashboard.stripe.com/subscriptions/', stripe_subscriptions.id) AS subscription_link,
   stripe_subscriptions.status AS subscription_status,
