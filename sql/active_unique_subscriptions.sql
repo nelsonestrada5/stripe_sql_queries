@@ -3,6 +3,7 @@
 -- Kajabi Offers [2148803852,2148803937]
 --
 -- 
+-- 
 SELECT
   TO_TIMESTAMP(stripe_payment_intents.created) AS payment_intent_date,
   stripe_subscriptions.metadata->>'kjb_offer_id' AS kjb_offer_id,
@@ -37,7 +38,8 @@ WHERE
   --    unpaid   - alternative to canceled and leaves invoices open, 
   --               but doesn’t attempt to pay them until a new payment method is added.
   stripe_subscriptions.status = 'active'
-  AND TO_TIMESTAMP(stripe_payment_intents.created) > '2023-06-30 00:00:00'
+  -- The below statement checks for payment intents that have been created in the last month only
+  AND TO_TIMESTAMP(stripe_payment_intents.created) > (CURRENT_DATE - INTERVAL '1 month')
   AND (stripe_subscriptions.metadata->>'kjb_offer_id' = '2148803852'
   OR stripe_subscriptions.metadata->>'kjb_offer_id' = '2148803937')
   -- Invoice Status States (https://stripe.com/docs/billing/migration/invoice-states)
