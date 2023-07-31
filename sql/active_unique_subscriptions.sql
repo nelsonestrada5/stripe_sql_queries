@@ -4,7 +4,7 @@
 --
 -- 
 -- 
-SELECT
+SELECT DISTINCT ON (stripe_customers.email)
   TO_TIMESTAMP(stripe_payment_intents.created) AS payment_intent_date,
   stripe_subscriptions.metadata->>'kjb_offer_id' AS kjb_offer_id,
   stripe_customers.name AS customer_name,
@@ -38,7 +38,6 @@ WHERE
   --    unpaid   - alternative to canceled and leaves invoices open, 
   --               but doesn’t attempt to pay them until a new payment method is added.
   stripe_subscriptions.status = 'active'
-  -- The below statement checks for payment intents that have been created in the last month only
   AND TO_TIMESTAMP(stripe_payment_intents.created) > (CURRENT_DATE - INTERVAL '1 month')
   AND (stripe_subscriptions.metadata->>'kjb_offer_id' = '2148803852'
   OR stripe_subscriptions.metadata->>'kjb_offer_id' = '2148803937')
@@ -51,4 +50,5 @@ WHERE
   -- AND (stripe_invoices.status != 'draft' AND stripe_invoices.status != 'open')
   -- AND stripe_invoices.amount_remaining > 0
 ORDER BY 
+  stripe_customers.email,
   TO_TIMESTAMP(stripe_payment_intents.created) DESC;
